@@ -1,5 +1,5 @@
 
-projectpath = r"D:\Deepesh\al_gnn_nodeCls"
+projectpath = r"C:\Users\aabilatharzeen\PycharmProjects\UQ_ALGNN"
 
 datapath = projectpath + "\\data"
 

@@ -276,7 +276,7 @@ def run(args, device, data, checkpoint_path, best_model_path):
     # Define dataloader function
     def get_dataloader(train_g, train_nid, sampler):
 
-        dataloader = dgl.dataloading.NodeDataLoader(
+        dataloader = dgl.dataloading.DataLoader(
             train_g,
             train_nid,
             sampler,
@@ -501,8 +501,11 @@ if __name__ == '__main__':
 
     # Loading the graph
     filepath = cnf.datapath + "\\cora_weighted.gpickle"
-    graph_raw = nx.read_gpickle(filepath)
-    
+
+    with open(filepath, 'rb') as f:
+        graph_raw  = pickle.load(f)
+    # graph_raw = nx.read_gpickle(filepath)
+
     # Define a mapping function to re-number node IDs
     mapping = dict(zip(graph_raw, range(0, len(graph_raw.nodes()))))
     # Renuumbering the nodes from 0, 1, 2, ...
